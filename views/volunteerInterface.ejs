@@ -1,0 +1,111 @@
+<%- include('partials/header') %>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a href="/" class="navbar-brand">WeRescue</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse nav-list-style" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#cta">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#footer">Contact us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section id="profileinfo">
+  <div class="container" id="pfpinfobox">
+    <div class="row">
+      <div class="objective-box col-lg-3">
+        <img src="uploads/volunteerImages/<%= profileImage %>" id="pfp" />
+      </div>
+
+      <div class="objective-box col-lg-3 pfp-userinfo">
+        <ul>
+          <li class="pfp-volunteerName"><%= fullname %></li>
+          <li><%= username %></li>
+          <li><%= mobileno %></li>
+          <li><%= address %></li>
+        </ul>
+      </div>
+
+      <div class="objective-box col-lg-3 pfp-contribution">
+        <ul id="pfpinfolist">
+          <li>
+            <h3 id="contribution_no"><%= volunteerPost.length %></h3>
+          </li>
+          <li>CONTRIBUTIONS</li>
+        </ul>
+      </div>
+
+      <div class="objective-box col-lg-3 pfp-buttons">
+        <ul>
+          <li>
+            <a href="/createPost" class="btn btn-primary" role="button">Add Posts</a>
+          </li>
+          <li>
+            <a href="/editInfo" class="btn btn-primary" id="editpfpbtn">Edit Profile</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recentposts-section" style="min-height: 53vh">
+  <h2 class="section-heading">Posts</h2>
+  <% if(volunteerPost.length == 0){ %>
+  <h1 style="text-align: center; color: grey; font-size: 1.5em">
+    No posts are added yet!
+  </h1>
+  <% } %> <%volunteerPost.forEach(function(post){%>
+  <div class="card mb-3" id="posts">
+    <div class="row no-gutters">
+      <div class="col-md-5">
+        <img src="uploads/postImages/<%= post.relatedImage %>" class="post-img" alt="..." />
+      </div>
+
+      <div class="col-md-4">
+        <div class="card-body">
+          <ul>
+            <li>
+              <h5 class="card-text">Address</h5>
+              <p><%= post.address %></p>
+            </li>
+            <li>
+              <h5 class="card-text">Description</h5>
+              <p><%= post.description %></p>
+            </li>
+            <li>
+              <h5 class="card-text">Date/Time</h5>
+              <p><%= post.dateAndTime %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <%if(!post.reviewedBy){%>
+          <p class="reviewed-status-1">Not yet reviewed!</p>
+        <%}%>
+        <%if(post.reviewedBy){%>
+          <a href="reviewedPostDetails/<%=post._id%>" class="reviewed-status-2">Reviewed by Official!</a>
+        <%}%>
+      </div>
+
+    </div>
+  </div>
+  <%})%>
+</section>
+
+<%- include('partials/footer') %>

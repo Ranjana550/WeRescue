@@ -1,0 +1,216 @@
+<%- include('partials/header') %>
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a href="/" class="navbar-brand">WeRescue</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse nav-list-style" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#cta">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#footer">Contact us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section class="pfp-section" id="profileinfo">
+  <div class="container" id="pfpinfobox">
+    <div class="row">
+      <div class="objective-box col-lg-3">
+        <img src="uploads/healthOfficialImages/<%= profileImage %>" id="pfp" />
+      </div>
+
+      <div class="objective-box col-lg-3 pfp-userinfo">
+        <ul>
+          <li class="pfp-volunteerName"><%= fullname %></li>
+          <li><%= username %></li>
+          <li><%= mobileno %></li>
+          <li><%= address %></li>
+        </ul>
+      </div>
+
+      <div class="objective-box col-lg-3 pfp-contribution">
+        <ul id="pfpinfolist">
+          <li>
+            <h3 id="contribution_no"><%= postReviewed.length %></h3>
+          </li>
+          <li>Cases Reviewed</li>
+        </ul>
+      </div>
+
+      <div class="objective-box col-lg-3 pfp-buttons" style="margin:auto;">
+        <ul>
+          <li>
+            <a href="/healthOfficialEditInfo" class="btn btn-primary" id="editpfpbtn">Edit Profile</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+<div class="healthOfficialHome">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link text-primary active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Post</button>
+      <button class="nav-link text-primary" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Reviewed Post</button>
+      <button class="nav-link text-primary" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Analytics</button>
+    </div>
+  </nav>
+
+  <div class="tab-content" id="nav-tabContent" style="min-height: 50vh">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" style="margin-top:20px;">
+
+      <% if(unReviwedPost.length == 0){ %>
+      <h1 style="text-align: center; color: grey; font-size: 1.5em">
+        No posts are present currently!
+      </h1>
+      <% } %> <%unReviwedPost.forEach(function(post){%>
+      <div class="card mb-3" id="posts">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="uploads\postImages\<%= post.relatedImage %>" alt="profileImage" class="post-img" alt="..." />
+          </div>
+
+          <div class="col-md-4">
+            <div class="card-body">
+              <ul>
+                <li>
+                  <h5 class="card-text">Name of the volunteer</h5>
+                  <p><%= post.volunteerName %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Mobile No</h5>
+                  <p><%= post.mobileno %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Address</h5>
+                  <p><%= post.address %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Description</h5>
+                  <p><%= post.description %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Date/Time</h5>
+                  <p><%= post.dateAndTime %></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card-body">
+              <form class="form-group" action="/healthOfficialInterface" method="POST">
+                <label for="alert">Emergency Alert</label>
+                <select class="form-select" aria-label="Default select example" name="alert">
+                  <option selected>Select</option>
+                  <option value="green">Green</option>
+                  <option value="orange">Orange</option>
+                  <option value="red">Red</option>
+                </select><br>
+                <label for="comments">Comments</label><br>
+                <textarea class="form-control" name="comments" rows="8" cols="38" placeholder="Type a comment!"></textarea>
+                <input type="hidden" name="postId" value="<%= post.id %>" />
+                <button class="form-control btn btn-primary" type="submit" name="button">Mark as reviewed</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%})%>
+    </div>
+    
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" style="margin-top:20px;">
+      <% if(postReviewed.length == 0){ %>
+      <h1 style="text-align: center; color: grey; font-size: 1.5em">
+        No posts are reviewed by you yet!
+      </h1>
+      <% } %> <%postReviewed.sort((a, b) => {
+        a.dateAndTime.replace(',', '');
+        b.dateAndTime.replace(',', '');
+        
+        const aDate = new Date(a.dateAndTime)
+        const bDate = new Date(b.dateAndTime)
+        
+        return bDate.getTime() - aDate.getTime()
+      }).forEach(function(post){%>
+      <div class="card mb-3" id="posts">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="uploads\postImages\<%= post.relatedImage %>" alt="profileImage" class="post-img" alt="..." />
+          </div>
+
+          <div class="col-md-4">
+            <div class="card-body">
+              <ul>
+                <li>
+                  <h5 class="card-text">Name of the volunteer</h5>
+                  <p><%= post.volunteerName %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Mobile No</h5>
+                  <p><%= post.mobileno %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Address</h5>
+                  <p><%= post.address %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Description</h5>
+                  <p><%= post.description %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Date/Time</h5>
+                  <p><%= post.dateAndTime %></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <% let bgColorClass = {
+            "green" : "bg-success text-white", 
+            "orange": "bg-warning text-white", 
+            "red": "bg-danger text-white"
+            } 
+          %>
+             
+
+          <div class="col-md-4">
+            <div class="card-body">
+              <form class="form-group" action="/healthOfficialInterface" method="POST">
+                <label for="alert">Emergency Alert</label>
+                <input class="form-control <%=bgColorClass[post.emergencyAlert]%>" type="text" size="45" name="alert" value="<%= post.emergencyAlert%>" readonly><br>
+                <label for="comments">Comments</label><br>
+                <textarea class="form-control" name="comments" rows="8" cols="37" value="<%= post.comments%>" readonly><%= post.comments%></textarea>
+                <input type="hidden" name="postId" value="<%= post.id %>" />
+              </form>
+
+              <div class="" style="text-align: center;">
+                <a href="/healthOfficialReviewedPostDetails/<%=post._id%>" style="margin:0 auto 0;">More Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%})%>
+    </div>
+
+
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" style="margin-top:20px;">
+    </div>
+  </div>
+</div>
+
+
+<%- include('partials/footer') %>

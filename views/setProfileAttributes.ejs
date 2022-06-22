@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<!-- Form -->
+<section class="editprofile-section" id="edit-form">
+  <div class="container">
+    <h3 class="section-heading"> Add additional details </h3>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <form action="/setProfileAttributes" method="POST" enctype="multipart/form-data">
+            <label for="fullname">Full Name</label>
+            <input type="text" class="form-control" name="fullname" value="<%= ejs_googleUser.fullname %>" required><br>
+
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="username" value="<%= ejs_googleUser.username %>" readonly required><br>
+
+            <label for="mobileno">Mobile No.</label>
+            <input type="text" class="form-control" pattern="(7|8|9)\d{9}" title="Phone number must consists of 10 digits" name="mobileno" required><br>
+
+            <label for="address">Address</label>
+            <textarea name="address" class="form-control" rows="2" required></textarea>
+
+            <button type="submit" class="btn btn-primary col-md-3">Update</button>
+          </form>
+        </div>
+      </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

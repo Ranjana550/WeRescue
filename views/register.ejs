@@ -1,0 +1,65 @@
+<%- include('partials/header') %>
+<script src="/js/validationChecks.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="login-container reg">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="">
+        <div class="">
+
+          <!-- Makes POST request to /register route -->
+          <form class="form-1" action="/register" method="POST" onsubmit="return passwordMatch()" enctype="multipart/form-data">
+            <h1>Register</h1>
+            <div class="form-group">
+              <% if(messages.length > 0 && messages[0] === false) {  %>
+                <div class="alert alert-danger">
+                  <%= messages[1] %>
+                </div>
+              <% } %>
+            </div>
+            <div class="form-group">
+              <label class="left-label" for="fullname">Full Name</label>
+              <input type="text" class="form-control" name="fullname" required>
+            </div>
+            <div class="form-group">
+              <label class="left-label" for="email">Email</label>
+              <input type="email" class="form-control" name="username" required>
+            </div>
+            <div class="form-group">
+              <label class="left-label" for="password">Password</label>
+              <input type="password" class="form-control" name="password" id="password"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
+              required>
+              <i class="toggle-password fa fa-fw fa-eye-slash" onclick="togglePasswordVisibility()"></i>
+
+            </div>
+            <div class="form-group">
+              <label class="left-label" for="confirm-password">Confirm Password</label>
+              <input type="password" class="form-control" name="confirm-password" id="confirm-password"
+              required>
+            </div>
+            <div class="form-group">
+              <label class="left-label" for="mobileno">Mobile No.</label>
+              <input type="tel" class="form-control" name="mobileno" id="mobileno"
+              pattern="(7|8|9)\d{9}"
+              title="Phone number must consists of 10 digits"
+              required>
+            </div>
+            <div class="form-group">
+              <label class="left-label" for="address">Address</label>
+              <textarea name="address" class="form-control" rows="2" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark btn-top-margin">Register</button>
+            <a href="/login">Already have an account?</a><br>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
