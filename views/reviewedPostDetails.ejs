@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Werescue</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu"
+      rel="stylesheet"
+    />
+    <!-- CSS Stylesheets -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles1.css" />
+    <link rel="stylesheet" href="/css/chatBox.css" />
+    <!-- Font Awesome -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"
+    ></script>
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a href="/" class="navbar-brand">WeRescue</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo02"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse nav-list-style"
+        id="navbarTogglerDemo02"
+      >
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#cta">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#footer">Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="">
+      <div class="card mb-3" id="posts">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img
+              src="/uploads/postImages/<%= relatedImage %>"
+              class="post-img"
+              alt="..."
+            />
+          </div>
+
+          <div class="col-md-3">
+            <div class="card-body">
+              <ul>
+                <li>
+                  <h5 class="card-text">Address</h5>
+                  <p><%= address %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Description</h5>
+                  <p><%= description %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Date/Time</h5>
+                  <p><%= dateAndTime %></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="card-body">
+              <ul>
+                <li>
+                  <h5 class="card-text">Reviewed By</h5>
+                  <p><%= reviewedBy %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Reviewer's Email</h5>
+                  <p><%= reviewerEmail %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Reviewer's Mobile No</h5>
+                  <p><%= reviewerMobileNo %></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="card-body">
+              <ul>
+                <li>
+                  <h5 class="card-text">Alert Type</h5>
+                  <p><%= emergencyAlert %></p>
+                </li>
+                <li>
+                  <h5 class="card-text">Comments</h5>
+                  <p><%= CommentByOfficial %></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-body">
+      <div class="container">
+        <h2 class="section-heading">Chat with Health Official</h2>
+        <div class="messaging">
+          <div class="inbox_msg">
+            <div class="mesgs">
+              <div class="msg_history">
+                <%chat.forEach(function(item){%> <%if(item.senderType ===
+                "official"){%>
+                <div class="incoming_msg" style="text-align: left">
+                  <div class="incoming_msg_img">
+                    <img
+                      src="https://ptetutorials.com/images/user-profile.png"
+                      alt="sunil"
+                    />
+                  </div>
+                  <div class="received_msg">
+                    <div class="received_withd_msg">
+                      <p class="msgs"><%=item.msg%></p>
+                    </div>
+                  </div>
+                </div>
+                <%}%> <%if(item.senderType === "volunteer"){%>
+                <div class="outgoing_msg">
+                  <div class="sent_msg">
+                    <p class="msgs"><%=item.msg%></p>
+                  </div>
+                </div>
+                <%}%> <%})%>
+              </div>
+            </div>
+
+            <div class="">
+              <form class="" action="/reviewedPostDetails/<%=postId%>" method="post">
+                <div class="input-group"> 
+                  <input type="text" class="form-control m-2" placeholder="Message" name="msg" value="" required title="Type a message"/>
+                  <input type="hidden" name="sender" value="volunteer" />
+                  <input type="hidden" name="senderType" value="volunteer" />
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary mx-1 my-2" name="button">Send</button>
+                  </span>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<%- include('partials/footer') %>
+

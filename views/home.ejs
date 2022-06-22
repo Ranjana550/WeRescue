@@ -1,0 +1,100 @@
+<%- include('partials/header') %>
+
+<!-- navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a href="/" class="navbar-brand">WeRescue</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse nav-list-style" id="navbarTogglerDemo02">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#objectives">Objectives</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#hiw">How it works</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#updates">Recent Updates</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#cta">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#footer">Contact us</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- title-section -->
+<section class="title-section" id="title">
+  <div class="div-bg-img">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="big-heading make-invisible">
+            Help us prevent an epidemic
+          </h1>
+          <a href="/login" class="btn btn-light btn-lg" role="button">Login</a>
+          <a href="/register" class="btn btn-light btn-lg" role="button">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Objectives section-->
+<section class="white-section" id="objectives">
+  <h2 class="section-heading">Our Objectives</h2>
+  <div class="container">
+    <div class="row" style="margin-top: 90px">
+
+      <div class="objective-box col-lg-4">
+        <!-- <i class="icon fas fa-check-circle fa-4x" style="height: 50% ;width: 50%;;"></i> -->
+        <img src="/images/prevent.png" alt="doctor's image" />
+        <h3 class="objective-title"></h3>
+        <p style="padding-left: 30px; padding-right: 30px">
+          Prevent and minimize suspected outbreaks.
+        </p>
+      </div>
+
+      <div class="objective-box col-lg-4">
+        <!-- <i class="icon fas fa-check-circle fa-4x" style="height: 50% ;width: 50%;;"></i> -->
+        <img src="/images/communicate.png" alt="Communication" />
+        <h3 class="objective-title"></h3>
+        <p style="padding-left: 30px; padding-right: 30px">
+          Better communication between volunteer and government officials.
+        </p>
+      </div>
+
+      <div class="objective-box col-lg-4">
+        <!-- <i class="icon fas fa-check-circle fa-4x" style="height: 50% ;width: 50%;;"></i> -->
+        <img src="/images/analyze.png" alt="Analyze with data" />
+        <h3 class="objective-title"></h3>
+        <p style="padding-left: 30px; padding-right: 30px">
+          Use data analysis and visualization to observe epidemics and pandemics
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<div style="background-color: #1d3a7c">
+  <section class="colored-section" id="hiw" style="background-color: #1d3a7c">
+    <h2 class="section-heading" style="color: #f9f7f7">How it works</h2>
+    <img src="/images/howitworks.png" alt="How it works" />
+  </section>
+</div>
+
+<!-- Recent Updates -->
+<section class="carousel-section" id="updates">
+  <h2 class="section-heading">Recent Updates</h2>
+  <br>
+</section>
+
+<%- include('partials/footer') %>

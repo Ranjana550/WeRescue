@@ -1,0 +1,422 @@
+/* Home Page */
+/* Navigation Bar(Header) */
+.navbar {
+  background-color: #1d3a7c;
+  padding: 1% 5% 1%;
+  font-size: larger;
+}
+
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  color: white;
+  padding: 0 18px;
+}
+
+.nav-link {
+  color: white;
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+
+.nav-list-style {
+  margin-left: 400px;
+}
+
+/* Buttons */
+.btn {
+  margin: 5% 3% 5% 0;
+}
+
+.make-invisible {
+  color: #ffffff00;
+}
+
+.make-invisible::selection {
+  color: #ffffff00;
+  background: #ffffff00;
+}
+
+.div-bg-img {
+  background-image: url(../images/banner.png);
+  background-size: cover;
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* Login and register */
+.login-container.log {
+  background: #3f72af;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+.login-container.reg {
+  background: #3f72af;
+  height: 120vh;
+  margin: 0;
+  position: relative;
+}
+
+.login-container .form-group {
+  margin: 2% 2%;
+}
+
+.login-container .form-1 {
+  border-radius: 1%;
+  background: #f8f8ff;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+}
+
+.login-container .left-label {
+  display: block;
+  text-align: left;
+}
+
+.form-1 h1 {
+  text-align: center;
+  margin-top: 0.7rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.login-container .btn {
+  margin: 5% 3% 5% 3%;
+}
+
+.toggle-password {
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: -25px;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  margin-top: 0.5rem;
+}
+
+.icons a {
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 0.2rem;
+}
+
+.icons .fa-google {
+  border-radius: 50%;
+  background: #ee5645;
+  color: #fff;
+  padding: 1rem;
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* Main */
+.centered {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.btn-top-margin {
+  margin-top: 15px;
+}
+
+.post-display {
+  border: 5px solid red;
+}
+
+body {
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat-Bold";
+  color: #181d31;
+}
+
+p {
+  color: black;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Headings */
+.big-heading {
+  font-family: "Montserrat-Black";
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
+.section-heading {
+  color: #181d31;
+  font-size: 2.5rem;
+  line-height: 1.5;
+  padding-top: 20px;
+  font-weight: 700;
+}
+
+/* Container */
+.container {
+  max-width: 90%;
+  padding: 0% 4% 10%;
+}
+
+.container-fluid {
+  max-width: 90%;
+  padding: 0% 4% 10%;
+}
+
+/* Sections */
+.colored-section,
+.white-section,
+.carousel-section .editprofile-section {
+  margin: 4%;
+}
+
+.colored-section {
+  background-color: black;
+  color: #181d31;
+  height: 600px;
+}
+
+#uploadbutton {
+  border-style: solid;
+  background-color: gainsboro;
+}
+
+#editpfpbtn {
+  border-style: ridge;
+  border-color: lightblue;
+}
+
+/* Title Section */
+#title {
+  background-color: whitesmoke;
+  text-align: left;
+}
+
+#title .container-fluid {
+  padding: 17% 15% 5% 3%;
+}
+
+/* Title Image */
+.title-image {
+  width: 70%;
+  right: 30%;
+}
+
+/* Objectives Section */
+#objectives {
+  position: relative;
+  background-color: whitesmoke;
+}
+
+.objective-title {
+  font-size: 1.5rem;
+}
+
+.objective-box {
+  padding: 1.6% 0%;
+}
+
+.icon {
+  color: #ef8172;
+  margin-bottom: 1rem;
+}
+
+.icon:hover {
+  color: #3d2c8d;
+}
+
+/* update Section */
+#updates {
+  background-color: whitesmoke;
+}
+
+.update-text {
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+.update-image {
+  float: left;
+  width: 20%;
+}
+
+/* carousel */
+.carousel-inner>.container-fluid {
+  position: relative;
+  max-width: 90%;
+  margin-left: 12%;
+}
+
+.carousel-item {
+  margin: 1%;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%);
+}
+
+#update-carousel {
+  background-color: whitesmoke;
+  border-style: groove;
+  margin: 1%;
+}
+
+#hiw {
+  background-color: whitesmoke;
+  padding-bottom: 3%;
+}
+
+#profileinfo {
+  background-color: #dbe2ef;
+  text-align: left;
+}
+
+#pfp {
+  border-radius: 70%;
+  width: 150px;
+  height: 150px;
+  float: left;
+  margin-left: 80px;
+}
+
+.pfp-userinfo {
+  margin-top: 30px;
+}
+
+.pfp-volunteerName {
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+.pfp-contribution {
+  text-align: center;
+  margin-top: 40px;
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.pfp-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/*ppostbox */
+.post-section {
+  box-sizing: border-box;
+}
+
+.recentposts-section {
+  border: solid;
+  margin: 2%;
+  padding: 2% 8%;
+  text-align: left;
+}
+
+.post-img {
+  height: 250px;
+  width: 500px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Footer Section */
+.footer {
+  background-color: #181d31;
+}
+
+#footer {
+  background-color: gray;
+  padding: 2%;
+}
+
+.social-icon {
+  margin: 20px 10px;
+  color: white;
+}
+
+@media (max-width: 1028px) {
+  #title {
+    text-align: center;
+  }
+
+  .title-image {
+    position: static;
+    transform: rotate(0);
+  }
+}
+
+/* Volunteer -c */
+#profileinfo {
+  margin-top: 1%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-style: solid;
+}
+
+#pfpinfobox {
+  padding: 0;
+}
+
+#posts {
+  border-style: solid;
+  text-align: left;
+}
+
+#post-form {
+  margin: 2%;
+  text-align: left;
+  border-style: solid;
+}
+
+.form-group {
+  margin: 2% 0%;
+}
+
+.editprofile-section {
+  margin: 2% 2%;
+  border-style: solid;
+  text-align: left;
+}
+
+.profilepic-div {
+  padding: 2% 6%;
+}
+
+/* Added later */
+.healthOfficialHome {
+  margin: 15px 25px 15px 25px;
+}

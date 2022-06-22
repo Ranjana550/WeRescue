@@ -1,0 +1,64 @@
+<%- include('partials/header') %>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a href="/" class="navbar-brand" >WeRescue</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav-list-style" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-auto" >
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#cta">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#footer">Contact us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Form -->
+<section class="editprofile-section" id="edit-form">
+  <div class="container">
+    <h3 class="section-heading"> Edit Profile </h3>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <form action="/healthOfficialEditInfo" method="POST" enctype="multipart/form-data">
+            <label for="fullname">Full Name</label>
+            <input type="text" class="form-control" name="fullname" value="<%= fullname%>" required><br>
+
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="username" value="<%= email%>" readonly><br>
+
+            <label for="email">Username</label>
+            <input type="email" class="form-control" name="username" value="<%= username%>" readonly><br>
+
+            <label for="mobileno">Mobile No.</label>
+            <input type="text" class="form-control" name="mobileno" value="<%= mobileno%>" required><br>
+
+            <label for="address">Address</label>
+            <input type="text" class="form-control" name="address" value="<%= address%>" required><br>
+
+            <button type="submit" class="btn btn-primary col-md-3">Update</button>
+          </form>
+        </div>
+
+        <div class="form-group profilepic-div col-md-6">
+          <img src="uploads/healthOfficialImages/<%= profileImage %>" alt="profileImage" id="" style="max-width:16em" /><br><br>
+          <form action="/healthOfficialEditProfileImage" method="POST" enctype="multipart/form-data">
+              <label for="profileImage">Change Profile Image</label>
+              <input type="file" class="form-control" name="profileImage" title="upload" placeholder="profilepic">
+              <button type="submit" class="btn btn-primary">Change profile Image</button>
+          </form>
+        </div>
+      </div>
+
+  </div>
+</section>
+<%- include('partials/footer') %>
